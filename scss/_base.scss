@@ -1,0 +1,378 @@
+@import "variables";
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  font-family: $default-font-family;
+  font-size: $default-font-size;
+  font-weight: $default-font-weight;
+  line-height: $default-line-height;
+  color: $default-color;
+  background-color: $default-background;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: $headings-margin-top;
+  margin-bottom: $headings-margin-bottom;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+}
+
+h1 {
+  font-size: $heading1-font-size;
+}
+
+h2 {
+  font-size: $heading2-font-size;
+}
+
+h3 {
+  font-size: $heading3-font-size;
+}
+
+h4 {
+  font-size: $heading4-font-size;
+}
+
+h5 {
+  font-size: $heading5-font-size;
+}
+
+h6 {
+  font-size: $heading6-font-size;
+}
+
+p {
+  margin-top: $paragraph-margin-top;
+  margin-bottom: $paragraph-margin-bottom;
+}
+
+a {
+  color: $link-color;
+  text-decoration: $link-text-decoration;
+
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: $link-hover-text-decoration;
+  }
+}
+
+button {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  color: $btn-color;
+  background-color: $btn-background;
+  border: $btn-border-width solid $btn-border-color;
+  border-radius: $btn-border-radius;
+  padding: $btn-padding-top-bottom $btn-padding-left-right;
+  text-decoration: $btn-text-decoration;
+
+  &:hover {
+    color: $btn-color;
+    background-color: $btn-background;
+    text-decoration: $btn-text-decoration;
+    transition: background-color 100ms linear;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+}
+
+.btn-primary {
+  @include create-btn(
+    $btn-primary-color,
+    $btn-primary-background,
+    $btn-primary-border
+  );
+}
+
+.btn-success {
+  @include create-btn(
+    $btn-success-color,
+    $btn-success-background,
+    $btn-success-border
+  );
+}
+
+.btn-info {
+  @include create-btn($btn-info-color, $btn-info-background, $btn-info-border);
+}
+
+.btn-warning {
+  @include create-btn(
+    $btn-warning-color,
+    $btn-warning-background,
+    $btn-warning-border
+  );
+}
+
+.btn-danger {
+  @include create-btn(
+    $btn-danger-color,
+    $btn-danger-background,
+    $btn-danger-border
+  );
+}
+
+ul,
+ol,
+dl {
+  margin-top: $list-margin-top;
+  margin-bottom: $list-margin-bottom;
+}
+
+.list-unstyled {
+  list-style: none;
+  padding: 0;
+}
+
+.alert {
+  padding: $alert-padding-top-bottom $alert-padding-left-right;
+  margin-bottom: $alert-margin-bottom;
+  border: $alert-border-width solid $alert-border-color;
+}
+
+.alert-primary {
+  @include create-alert(
+    $alert-primary-color,
+    $alert-primary-background,
+    $alert-primary-border
+  );
+}
+
+.alert-success {
+  @include create-alert(
+    $alert-success-color,
+    $alert-success-background,
+    $alert-success-border
+  );
+}
+
+.alert-info {
+  @include create-alert(
+    $alert-info-color,
+    $alert-info-background,
+    $alert-info-border
+  );
+}
+
+.alert-warning {
+  @include create-alert(
+    $alert-warning-color,
+    $alert-warning-background,
+    $alert-warning-border
+  );
+}
+
+.alert-danger {
+  @include create-alert(
+    $alert-danger-color,
+    $alert-danger-background,
+    $alert-danger-border
+  );
+}
+
+blockquote {
+  margin: 0;
+  padding: $blockquote-padding-top-bottom $blockquote-padding-left-right;
+  margin-bottom: $blockquote-margin-bottom;
+  border-left: $blockquote-border-width solid $blockquote-border-color;
+
+  & footer {
+    font-style: italic;
+    font-size: $blockquote-footer-font-size;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+// Defines how flexbox items are ordered within a flexbox container.
+.flex-row {
+  flex-direction: row;
+}
+.flex-column {
+  flex-direction: column;
+}
+
+// Defines if flexbox items appear on a single line or on multiple lines within a flexbox container.
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+// Defines how flexbox items are aligned according to the main axis, within a flexbox container.
+.justify-content-start {
+  justify-content: flex-start;
+}
+.justify-content-end {
+  justify-content: flex-end;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+.justify-content-around {
+  justify-content: space-around;
+}
+
+// Defines how flexbox items are aligned according to the cross axis, within a line of a flexbox container.
+.align-items-start {
+  align-items: flex-start;
+}
+.align-items-end {
+  align-items: flex-end;
+}
+.align-items-center {
+  align-items: center;
+}
+.align-items-baseline {
+  align-items: baseline;
+}
+.align-items-stretch {
+  align-items: stretch;
+}
+
+// Defines how each line is aligned within a flexbox container. It only applies if flex-wrap: wrap is present, and if there are multiple lines of flexbox items.
+.align-content-center {
+  align-content: center;
+}
+.align-content-stretch {
+  align-content: stretch;
+}
+.align-content-baseline {
+  align-content: baseline;
+}
+.align-content-between {
+  align-content: space-between;
+}
+.align-content-around {
+  align-content: space-around;
+}
+
+// Works like align-items, but applies only to a single flexbox item, instead of all of them.
+.align-self-auto {
+  align-self: auto;
+}
+.align-self-start {
+  align-self: flex-start;
+}
+.align-self-end {
+  align-self: flex-end;
+}
+.align-self-center {
+  align-self: center;
+}
+.align-self-baseline {
+  align-self: baseline;
+}
+.align-self-stretch {
+  align-self: stretch;
+}
+
+.flex-grow-on {
+  flex-grow: 1;
+}
+.flex-grow-off {
+  flex-grow: 0;
+}
+
+.flex-shrink-on {
+  flex-shrink: 1;
+}
+.flex-shrink-off {
+  flex-shrink: 0;
+}
+
+.flex-item-100 {
+  flex-basis: 100%;
+}
+
+.flex-item-90 {
+  flex-basis: 90%;
+}
+.flex-item-70 {
+  flex-basis: 70%;
+}
+.flex-item-30 {
+  flex-basis: 30%;
+}
+.flex-item-10 {
+  flex-basis: 10%;
+}
+
+.flex-item-80 {
+  flex-basis: 80%;
+}
+.flex-item-60 {
+  flex-basis: 60%;
+}
+.flex-item-40 {
+  flex-basis: 40%;
+}
+.flex-item-20 {
+  flex-basis: 20%;
+}
+
+.flex-item-75 {
+  flex-basis: 75%;
+}
+.flex-item-50 {
+  flex-basis: 50%;
+}
+.flex-item-25 {
+  flex-basis: 25%;
+}
+
+.flex-item-66 {
+  flex-basis: 66.666666%;
+}
+.flex-item-33 {
+  flex-basis: 33.333333%;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.img-thumbnail {
+  border: 1px solid $gray-lighter;
+  padding: ($spacer / 4);
+}
+
+.disable-hover {
+  pointer-events: none;
+}
